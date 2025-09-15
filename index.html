@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>اختبار تصنيف المخلوقات الحية</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header class="app-header">
+		<div class="header-content">
+			<div class="date-info">
+				<span id="current-date"></span>
+			</div>
+			<div class="student-info">
+				<div class="info-item">
+					<span class="label">عمل الطالب:</span>
+					<span class="value">فراس المالكي</span>
+				</div>
+				<div class="info-item">
+					<span class="label">المدرسة:</span>
+					<span class="value">عقيل ابن ابي طالب الابتدائية</span>
+				</div>
+				<div class="info-item">
+					<span class="label">معلم المادة:</span>
+					<span class="value">محمد علي البيوض</span>
+				</div>
+			</div>
+			<div class="science-decor" aria-hidden="true">🔬 ⚗️ 🧪 🔭 🧬</div>
+		</div>
+	</header>
+
+	<div id="app-container" class="app-container">
+		<!-- شاشة البداية -->
+		<section id="start-screen" class="screen active">
+			<h1>اختبار تصنيف المخلوقات الحية</h1>
+			<div class="subject-badge">علوم الصف الرابع الابتدائي</div>
+			<button id="start-btn" class="btn primary">ابدأ الاختبار</button>
+		</section>
+
+		<!-- شاشة الاختبار -->
+		<section id="quiz-screen" class="screen">
+			<div class="progress">
+				<div id="progress-bar" class="progress-bar" style="width:0%"></div>
+			</div>
+			<div id="question-container" class="question-container"></div>
+			<div id="options-container" class="options-container"></div>
+		</section>
+
+		<!-- شاشة النتيجة -->
+		<section id="result-screen" class="screen">
+			<h2>نتيجتك</h2>
+			<p id="final-score" class="final-score">0 / 10</p>
+			<p class="encourage">عمل رائع! استمر بالمحاولة لتتحسن.</p>
+			<button id="retry-btn" class="btn">أعد الاختبار</button>
+			<div id="certificate-prompt" class="certificate-prompt hidden">
+				<p class="congrats">ممتاز! حصلت على الدرجة الكاملة. أدخل اسمك لإصدار الشهادة.</p>
+				<input id="student-name-input" type="text" placeholder="اسم الطالب" autocomplete="name" />
+				<button id="issue-certificate-btn" class="btn primary">إصدار الشهادة</button>
+			</div>
+		</section>
+
+		<!-- شاشة الشهادة -->
+		<section id="certificate-screen" class="screen">
+			<div id="certificate" class="certificate">
+				<div class="cert-border">
+					<div class="cert-inner">
+						<h3 class="cert-title">شهادة إنجاز</h3>
+						<p class="cert-subtitle">تُمنح هذه الشهادة إلى</p>
+						<p id="cert-name" class="cert-name">—</p>
+						<p class="cert-body">لحصوله/ها على الدرجة الكاملة في اختبار "تصنيف المخلوقات الحية"</p>
+						<p class="cert-date">بتاريخ <span id="cert-date">—</span></p>
+						<div class="cert-seal" aria-hidden="true">★</div>
+					</div>
+				</div>
+			</div>
+			<div class="cert-actions no-print">
+				<button id="print-btn" class="btn outline">طباعة الشهادة</button>
+				<button id="back-home-btn" class="btn">العودة للصفحة الرئيسية</button>
+			</div>
+		</section>
+	</div>
+
+	<script src="script.js"></script>
+</body>
+</html>

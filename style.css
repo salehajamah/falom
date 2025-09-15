@@ -1,0 +1,429 @@
+/* أساسيات محسنة وألوان مناسبة للأطفال */
+:root {
+	--bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	--bg-light: #f8fafc;
+	--text: #1e293b;
+	--muted: #64748b;
+	--primary: #10b981;
+	--primary-light: #34d399;
+	--danger: #ef4444;
+	--card: #ffffff;
+	--border: #e2e8f0;
+	--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	--shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* { 
+	box-sizing: border-box; 
+}
+
+html, body { 
+	margin: 0; 
+	padding: 0; 
+	font-family: "Tajawal", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; 
+	background: var(--bg); 
+	color: var(--text); 
+	min-height: 100vh;
+}
+
+/* الهيدر المحسن */
+.app-header {
+	background: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(10px);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	padding: 16px 0;
+	box-shadow: var(--shadow);
+}
+
+.header-content {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.science-decor {
+	font-size: 20px;
+	opacity: 0.9;
+	filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+}
+
+.date-info {
+	background: var(--primary);
+	color: white;
+	padding: 8px 16px;
+	border-radius: 20px;
+	font-weight: 600;
+	font-size: 14px;
+	box-shadow: var(--shadow);
+}
+
+.student-info {
+	display: flex;
+	gap: 24px;
+	flex-wrap: wrap;
+}
+
+.info-item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4px;
+}
+
+.info-item .label {
+	font-size: 12px;
+	color: var(--muted);
+	font-weight: 500;
+}
+
+.info-item .value {
+	font-size: 14px;
+	font-weight: 700;
+	color: var(--text);
+}
+
+.app-container { 
+	max-width: 800px; 
+	margin: 0 auto; 
+	padding: 24px 16px 40px; 
+}
+
+.screen { 
+	display: none; 
+	background: var(--card); 
+	border: 1px solid var(--border); 
+	border-radius: 20px; 
+	padding: 32px; 
+	box-shadow: var(--shadow-lg);
+	backdrop-filter: blur(10px);
+	position: relative;
+	overflow: hidden;
+}
+
+.screen::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 4px;
+	background: linear-gradient(90deg, var(--primary), var(--primary-light));
+}
+
+.screen.active { 
+	display: block; 
+}
+
+.hidden { 
+	display: none !important; 
+}
+
+h1, h2 { 
+	margin-top: 0; 
+	text-align: center;
+	background: linear-gradient(135deg, var(--primary), var(--primary-light));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+h1 {
+	font-size: 2.5rem;
+	margin-bottom: 24px;
+	text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.subject-badge {
+	display: inline-block;
+	margin: -8px auto 16px;
+	padding: 8px 14px;
+	border-radius: 999px;
+	background: linear-gradient(90deg, #60a5fa, #22c55e);
+	color: #fff;
+	font-weight: 800;
+	box-shadow: var(--shadow);
+}
+
+.btn { 
+	padding: 16px 24px; 
+	border-radius: 12px; 
+	border: none; 
+	background: linear-gradient(135deg, #e2e8f0, #cbd5e1); 
+	cursor: pointer; 
+	font-weight: 700; 
+	font-size: 16px;
+	transition: all 0.3s ease;
+	box-shadow: var(--shadow);
+	position: relative;
+	overflow: hidden;
+}
+
+.btn::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+	transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+	left: 100%;
+}
+
+.btn:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-lg);
+}
+
+.btn.primary { 
+	background: linear-gradient(135deg, var(--primary), var(--primary-light)); 
+	color: white; 
+	box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn.primary:hover {
+	box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+.btn.outline { 
+	background: transparent; 
+}
+
+/* شريط التقدم المحسن */
+.progress { 
+	height: 12px; 
+	background: #e2e8f0; 
+	border-radius: 999px; 
+	overflow: hidden; 
+	margin-bottom: 24px; 
+	box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+	position: relative;
+}
+
+.progress::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.2) 25%, rgba(255,255,255,0.2) 50%, transparent 50%, transparent 75%, rgba(255,255,255,0.2) 75%);
+	background-size: 20px 20px;
+	animation: progress-stripes 1s linear infinite;
+}
+
+@keyframes progress-stripes {
+	0% { background-position: 0 0; }
+	100% { background-position: 20px 0; }
+}
+
+.progress-bar { 
+	height: 100%; 
+	background: linear-gradient(90deg, var(--primary), var(--primary-light), #60a5fa); 
+	width: 0%; 
+	transition: width 0.5s ease; 
+	position: relative;
+	z-index: 1;
+	box-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+/* السؤال والخيارات المحسنة */
+.question-container { 
+	font-size: 20px; 
+	margin-bottom: 24px; 
+	font-weight: 600;
+	text-align: center;
+	padding: 20px;
+	background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+	border-radius: 16px;
+	border: 2px solid #e2e8f0;
+	box-shadow: var(--shadow);
+}
+
+.options-container { 
+	display: grid; 
+	gap: 16px; 
+}
+
+.option { 
+	padding: 16px 20px; 
+	border: 2px solid #cbd5e1; 
+	border-radius: 16px; 
+	cursor: pointer; 
+	user-select: none; 
+	background: linear-gradient(135deg, #f8fafc, #ffffff); 
+	transition: all 0.3s ease;
+	box-shadow: var(--shadow);
+	position: relative;
+	overflow: hidden;
+}
+
+.option::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+	transition: left 0.5s ease;
+}
+
+.option:hover::before {
+	left: 100%;
+}
+
+.option:hover { 
+	border-color: var(--primary); 
+	background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-lg);
+}
+
+.option.correct { 
+	background: linear-gradient(135deg, #dcfce7, #bbf7d0); 
+	border-color: #22c55e; 
+	box-shadow: 0 0 20px rgba(34, 193, 95, 0.3);
+}
+
+.option.incorrect { 
+	background: linear-gradient(135deg, #fee2e2, #fecaca); 
+	border-color: #ef4444; 
+	box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.option.disabled { 
+	cursor: not-allowed; 
+	opacity: 0.7; 
+	transform: none;
+}
+
+/* النتيجة */
+.final-score { 
+	font-size: 22px; 
+	font-weight: 800; 
+	color: var(--primary);
+}
+
+.encourage {
+	color: var(--muted);
+	margin: 10px 0;
+}
+
+.certificate-prompt { 
+	margin-top: 16px; 
+	display: grid; 
+	gap: 10px; 
+}
+
+.congrats { 
+	color: #16a34a; 
+	font-weight: 700; 
+}
+
+input[type="text"] {
+	padding: 10px 12px;
+	border: 2px solid #cbd5e1;
+	border-radius: 8px;
+	font-size: 16px;
+	background: #f8fafc;
+}
+
+input[type="text"]:focus {
+	outline: none;
+	border-color: var(--primary);
+	background: white;
+}
+
+/* الشهادة والطباعة */
+.certificate { 
+	background: #fefefc; 
+	color: #111827; 
+	border-radius: 14px; 
+	padding: 18px; 
+	text-align: center; 
+	margin-bottom: 12px; 
+	box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+	background-image: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0));
+}
+
+.cert-border { 
+	border: 4px double #0f172a; 
+	border-radius: 12px; 
+	padding: 18px; 
+	position: relative; 
+	background: #ffffff;
+}
+
+.cert-inner { max-width: 720px; margin: 0 auto; padding: 10px 8px; }
+.cert-title { font-size: 28px; margin: 4px 0 8px; letter-spacing: 0.5px; }
+.cert-subtitle { color: #475569; margin: 0 0 8px; }
+.cert-name { font-size: 26px; font-weight: 800; color: var(--primary); margin: 6px 0 10px; }
+.cert-body { margin: 8px 0; }
+.cert-date { margin: 6px 0 0; }
+
+.cert-seal { 
+	position: absolute; 
+	left: 16px; 
+	bottom: 16px; 
+	width: 60px; 
+	height: 60px; 
+	border-radius: 50%; 
+	background: radial-gradient(circle at 30% 30%, #22c55e, #16a34a); 
+	color: #fff; 
+	font-size: 28px; 
+	font-weight: 900; 
+	display: flex; 
+	align-items: center; 
+	justify-content: center; 
+	box-shadow: 0 6px 16px rgba(22,163,74,0.35);
+}
+
+.cert-actions { display: flex; gap: 8px; justify-content: center; margin-top: 10px; }
+
+.no-print { 
+	display: inline-flex; 
+}
+
+/* تحسينات إضافية للواجهة */
+@media (max-width: 768px) {
+	.header-content {
+		flex-direction: column;
+		text-align: center;
+	}
+	
+	.student-info {
+		justify-content: center;
+	}
+	
+	h1 {
+		font-size: 2rem;
+	}
+	
+	.screen {
+		padding: 20px;
+	}
+}
+
+@media print {
+	/* لا نخفي app-container لأن الشهادة بداخله */
+	.no-print, #start-screen, #quiz-screen, #result-screen, .app-header { 
+		display: none !important; 
+	}
+	#certificate-screen, #certificate { 
+		display: block !important; 
+		border: none; 
+		box-shadow: none;
+	}
+	body { 
+		background: #fff; 
+	}
+}
