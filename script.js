@@ -81,30 +81,37 @@ function renderQuestion() {
 
 	questionContainer.textContent = `${currentIndex + 1}. ${q.question}`;
 	optionsContainer.innerHTML = '';
-	const optionEls = q.options.map(opt => {
+
+	// إنشاء الخيارات ثم إلحاق المستمعين بعد الإضافة لضمان مرجعية صحيحة
+	q.options.forEach(opt => {
 		const el = document.createElement('div');
 		el.className = 'option';
 		el.textContent = opt;
-		el.addEventListener('click', () => handleOptionClick(el, q.answer, Array.from(optionsContainer.children)));
-		return el;
+		optionsContainer.appendChild(el);
 	});
-	optionEls.forEach(el => optionsContainer.appendChild(el));
+
+	const currentOptionEls = Array.from(optionsContainer.children);
+	currentOptionEls.forEach(el => {
+		el.addEventListener('click', () => handleOptionClick(el, q.answer));
+	});
 }
 
 function disableOptions(optionEls) {
 	optionEls.forEach(l => l.classList.add('disabled'));
 }
 
-function handleOptionClick(clickedEl, correctAnswer, optionEls) {
+function handleOptionClick(clickedEl, correctAnswer) {
 	if (clickedEl.classList.contains('disabled')) return;
 
-	optionEls.forEach(el => { if (el.textContent === correctAnswer) el.classList.add('correct'); });
+	// الحصول على جميع الخيارات داخل نفس المجموعة (السؤال الحالي)
+	const groupEls = Array.from(clickedEl.parentElement.children);
+	groupEls.forEach(el => { if (el.textContent === correctAnswer) el.classList.add('correct'); });
 	if (clickedEl.textContent === correctAnswer) {
 		score += 1;
 	} else {
 		clickedEl.classList.add('incorrect');
 	}
-	disableOptions(optionEls);
+	disableOptions(groupEls);
 	updateProgress();
 	setTimeout(() => {
 		currentIndex += 1;
